@@ -69,3 +69,13 @@ body{
     justify-content: center;
     margin-top: 8px;
 }
+
+@media (max-width: 530px) {
+    .card-img-top{
+        height: 270px;
+    }
+
+    .container{
+        min-height: 0;
+    }
+}
