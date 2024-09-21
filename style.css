@@ -1,0 +1,71 @@
+body{
+    background-color: rgb(129, 194, 226);
+}
+
+.container{
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.card{
+    max-width: 30rem;
+    margin-inline: .5rem !important;
+}
+
+.answer:hover{
+    cursor: pointer;
+    background-color: rgb(196, 234, 252);
+    transition-delay: 0.15s;
+}
+
+.question-footer{
+    border-top: 1px solid rgb(129, 194, 226);
+    margin-bottom: .5rem;
+    margin-inline: .5rem;
+    display: flex;
+    justify-content: space-between;
+    padding-top: .5rem;
+}
+
+.btn.btn-primary{
+    background-color: rgb(129, 194, 226);
+    border: 0;
+}
+
+.btn.btn-primary:hover{
+    background-color: rgb(49, 178, 242);
+}
+
+.succsess{
+    background-color: rgb(177 249 168);
+}
+
+.fail{
+    background-color: rgb(245 151 151);
+}
+
+.endNote{
+    display: flex;
+    justify-content: center;
+    padding-bottom: 8px;
+}
+
+.howMany{
+    text-align: center;
+}
+
+.progress{
+    border-radius: 0px;
+}
+
+.progress-bar{
+    background-color: rgb(129, 194, 226);
+}
+
+.restart{
+    display: flex;
+    justify-content: center;
+    margin-top: 8px;
+}
