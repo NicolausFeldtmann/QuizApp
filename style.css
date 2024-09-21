@@ -75,4 +75,14 @@ body{
     .container{
         min-height: 0;
     }
+
+    .card-img-top{
+        height: 148px;
+        width: 300px;
+    }
+
+    .imgArea{
+        display: flex;
+        justify-content: center;
+    }
 }
