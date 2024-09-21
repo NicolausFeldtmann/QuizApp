@@ -71,9 +71,6 @@ body{
 }
 
 @media (max-width: 530px) {
-    .card-img-top{
-        height: 270px;
-    }
 
     .container{
         min-height: 0;
