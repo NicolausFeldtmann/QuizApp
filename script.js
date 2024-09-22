@@ -108,15 +108,6 @@ let questions = [
     },
 
     {
-        "question": "Wo findet man die Hypophyse?",
-        "answer_1": "Im Gehirn",
-        "answer_2": "Im Magen",
-        "answer_3": "In Brüssel",
-        "answer_4": "In eine Mathe Gleichung",
-        "right_answer": 1
-    },
-
-    {
         "question": "Wie tief liegt der tiefste Punkt der Welt unter dem Meeresspiegel?",
         "answer_1": "8848m",
         "answer_2": "3378m",
@@ -132,46 +123,30 @@ let currentQuestion = 0;
 
 let audioSuccsess = new Audio('audio/sucsess.mp3');
 let audioFail = new Audio('audio/fail.mp3');
+let audioTada = new Audio('audio/tada.mp3');
 
 function init() {
     document.getElementById('questionTotal').innerHTML = questions.length;
-
     showQuestion();
 }
 
 function showQuestion() {
-    if (currentQuestion >= questions.length) {
-        document.getElementById('endScreen').style = '';
-        document.getElementById('endImg').style = '';
-        document.getElementById('questionBody').style = 'display: none';
-        document.getElementById('questionImg').style = 'display: none'
-        document.getElementById('allQuestions').innerHTML = questions.length;
-        document.getElementById('amountOfRigth').innerHTML = rigthQuestions;
-        let percent = currentQuestion / questions.length * 100;
-        percent = percent.toFixed(0);
-        document.getElementById('progressBar').innerHTML = percent + '%';
-        document.getElementById('progressBar').style = `width: ${percent}%`;
+    if (gameOver()) {
+        showEndScreen();
     } else {
-        let percent = currentQuestion / questions.length * 100;
-        percent = percent.toFixed(0);
-        document.getElementById('progressBar').innerHTML = percent + '%';
-        document.getElementById('progressBar').style = `width: ${percent}%`;
-        let question = questions[currentQuestion];
-        document.getElementById('questionNumber').innerHTML = currentQuestion +1;
-        document.getElementById('question').innerHTML = question['question'];
-        document.getElementById('answer_1').innerHTML = question['answer_1'];
-        document.getElementById('answer_2').innerHTML = question['answer_2'];
-        document.getElementById('answer_3').innerHTML = question['answer_3'];
-        document.getElementById('answer_4').innerHTML = question['answer_4'];
+        renderNextQuestion();
+        calculateProgress();
     }
+}
+
+function gameOver() {
+    return currentQuestion >= questions.length;
 }
 
 function answer(selection) {
     let question = questions[currentQuestion];
     let selectedQuestionNumber = selection.slice(-1);
-
     let rigthAnswerId = `answer_${question['right_answer']}`;
-
     if (selectedQuestionNumber == question['right_answer']) {
         document.getElementById(selection).classList.add('succsess');
         audioSuccsess.play();
@@ -217,4 +192,39 @@ function restart() {
     rigthQuestions = 0;
     currentQuestion = 0;
     init();
+}
+
+function showEndScreen() {
+    document.getElementById('endScreen').style = '';
+    document.getElementById('endImg').style = '';
+    document.getElementById('questionBody').style = 'display: none';
+    document.getElementById('questionImg').style = 'display: none'
+    document.getElementById('allQuestions').innerHTML = questions.length;
+    document.getElementById('amountOfRigth').innerHTML = rigthQuestions;
+    let percent = currentQuestion / questions.length * 100;
+    percent = percent.toFixed(0);
+    document.getElementById('progressBar').innerHTML = percent + '%';
+    document.getElementById('progressBar').style = `width: ${percent}%`;
+    audioTada.play();
+}
+
+function renderNextQuestion() {
+    let question = questions[currentQuestion];
+    document.getElementById('questionNumber').innerHTML = currentQuestion +1;
+    document.getElementById('question').innerHTML = question['question'];
+    document.getElementById('answer_1').innerHTML = question['answer_1'];
+    document.getElementById('answer_2').innerHTML = question['answer_2'];
+    document.getElementById('answer_3').innerHTML = question['answer_3'];
+    document.getElementById('answer_4').innerHTML = question['answer_4'];
+}
+
+function calculateProgress() {
+    let percent = currentQuestion / questions.length * 100;
+    percent = percent.toFixed(0);
+    document.getElementById('progressBar').innerHTML = percent + '%';
+    document.getElementById('progressBar').style = `width: ${percent}%`;
+}
+
+function correctAnswer() {
+    
 }

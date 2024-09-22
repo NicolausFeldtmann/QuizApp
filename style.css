@@ -72,17 +72,28 @@ body{
 
 @media (max-width: 530px) {
 
+    body{
+        font-size: 12px;
+    }
+
+    .navbar{
+        padding: 0;
+    }
+
     .container{
         min-height: 0;
     }
 
     .card-img-top{
-        height: 148px;
-        width: 300px;
+        width: 228px;
     }
 
     .imgArea{
         display: flex;
         justify-content: center;
+    }
+
+    .container{
+        min-height: auto;
     }
 }
